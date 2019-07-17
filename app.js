@@ -7,14 +7,20 @@ const methodOverride = require('method-override')
 const session = require('express-session')
 const passport = require('passport')
 const flash = require('connect-flash')
-const db = require('./models')
 const port = 3000
+
+const db = require('./models')
+const Todo = db.Todo
+const User = db.User
+
+
 
 // setup the app
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(flash())
 
 // use express session
 app.use(session({
@@ -40,6 +46,7 @@ app.use((req, res, next) => {
 // routes 
 app.use('/', require('./routes/home.js'))
 app.use('/users', require('./routes/user.js'))
+app.use('/todos', require('./routes/todo.js'))
 
 // listening on express app
 app.listen(port, () => {
