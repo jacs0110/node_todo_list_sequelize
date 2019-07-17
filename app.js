@@ -25,30 +25,9 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 
-// routes
-app.get('/', (req, res) => {
-  res.send('Hello world')
-})
-
-app.get('/users/login', (req, res) => {
-  res.render('login')
-})
-
-app.post('/users/login', (req, res) => {
-  res.send()
-})
-
-app.get('/users/register', (req, res) => {
-  res.render('register')
-})
-
-app.post('/users/register', (req, res) => {
-  res.send('register')
-})
-
-app.get('/users/logout', (req, res) => {
-  res.send('logout')
-})
+// routes 
+app.use('/', require('./routes/home.js'))
+app.use('/users', require('./routes/user.js'))
 
 // listening on express app
 app.listen(port, () => {
