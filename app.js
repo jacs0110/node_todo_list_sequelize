@@ -7,13 +7,16 @@ const methodOverride = require('method-override')
 const session = require('express-session')
 const passport = require('passport')
 const flash = require('connect-flash')
+const bcrypt = require('bcryptjs')
 const port = 3000
 
 const db = require('./models')
 const Todo = db.Todo
 const User = db.User
 
-
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 
 // setup the app
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -47,6 +50,7 @@ app.use((req, res, next) => {
 app.use('/', require('./routes/home.js'))
 app.use('/users', require('./routes/user.js'))
 app.use('/todos', require('./routes/todo.js'))
+app.use('/auth', require('./routes/auths.js'))
 
 // listening on express app
 app.listen(port, () => {
