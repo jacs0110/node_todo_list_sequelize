@@ -85,7 +85,7 @@ $ npm install
 
 5. Create models
 ```
-npx sequelize db:migrate
+$ npx sequelize db:migrate
 ```
 
 5. Create .env for facebook login feature
@@ -98,7 +98,7 @@ FACEBOOK_CALLBACK=http://localhost:3000/auth/facebook/callback
 ```
 6. Run the server
 ```
-npm run dev
+$ npm run dev
 ```
 
 ---
