@@ -8,7 +8,7 @@ const session = require('express-session')
 const passport = require('passport')
 const flash = require('connect-flash')
 const bcrypt = require('bcryptjs')
-const port = 3000
+const port = process.env.PORT || 3000
 
 const db = require('./models')
 const Todo = db.Todo
